@@ -1,0 +1,68 @@
+version: '3.7'
+
+services:
+
+    pgadmin:
+        image: dpage/pgadmin4
+        container_name: pgadmin
+        volumes:
+            - pgadmin-data
+        ports:
+            - 5050:80
+        environment:
+            - PGADMIN_DEFAULT_EMAIL=docker@test.com
+            - PGADMIN_DEFAULT_PASSWORD=docker
+        restart: on-failure
+
+    pg11:
+        image: postgres:11-alpine
+        container_name: pg11
+        volumes:
+            - pg11-database:/var/lib/postgresql/data
+        ports:
+            - 5431:5432
+        environment:
+            - POSTGRES_PASSWORD=docker
+        restart: on-failure
+
+    pg10:
+        image: postgres:10-alpine
+        container_name: pg10
+        volumes:
+            - pg10-database:/var/lib/postgresql/data
+        ports:
+            - 5430:5432
+        environment:
+            - POSTGRES_PASSWORD=docker
+        restart: on-failure
+
+    mssql2017:
+        image: mcr.microsoft.com/mssql/server:latest
+        container_name: mssql2017
+        volumes:
+            - mssql2017-database:/var/opt/mssql
+        ports:
+            - 1433:1433
+        environment:
+            - ACCEPT_EULA=Y
+            - SA_PASSWORD=P@ssw0rd!
+            - MSSQL_PID=Developer
+        restart: on-failure
+
+volumes:
+
+    pg11-database:
+        driver: local
+        name: pg11-database
+
+    pg10-database:
+        driver: local
+        name: pg10-database
+
+    pgadmin-data:
+        driver: local
+        name: pgadmin-data
+
+    mssql2017-database:
+        driver: local
+        name: mssql2017-database
