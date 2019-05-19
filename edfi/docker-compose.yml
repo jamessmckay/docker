@@ -10,8 +10,8 @@ services:
         ports:
             - 5050:80
         environment:
-            - PGADMIN_DEFAULT_EMAIL=docker@test.com
-            - PGADMIN_DEFAULT_PASSWORD=docker
+            - PGADMIN_DEFAULT_EMAIL=${PG_ADMIN_USER}
+            - PGADMIN_DEFAULT_PASSWORD=${PG_ADMIN_PASSWORD}
         restart: on-failure
 
     pg11:
@@ -22,7 +22,7 @@ services:
         ports:
             - 5431:5432
         environment:
-            - POSTGRES_PASSWORD=docker
+            - POSTGRES_PASSWORD=${PG_PASSWORD}
         restart: on-failure
 
     pg10:
@@ -33,7 +33,7 @@ services:
         ports:
             - 5430:5432
         environment:
-            - POSTGRES_PASSWORD=docker
+            - POSTGRES_PASSWORD=${PG_PASSWORD}
         restart: on-failure
 
     mssql2017:
@@ -45,7 +45,7 @@ services:
             - 1433:1433
         environment:
             - ACCEPT_EULA=Y
-            - SA_PASSWORD=P@ssw0rd!
+            - SA_PASSWORD=${MSSQL_PASSWORD}
             - MSSQL_PID=Developer
         restart: on-failure
 
