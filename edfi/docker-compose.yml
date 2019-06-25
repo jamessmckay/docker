@@ -2,18 +2,6 @@ version: '3.7'
 
 services:
 
-    pgadmin:
-        image: dpage/pgadmin4
-        container_name: pgadmin
-        volumes:
-            - pgadmin-data
-        ports:
-            - 5050:80
-        environment:
-            - PGADMIN_DEFAULT_EMAIL=${PG_ADMIN_USER}
-            - PGADMIN_DEFAULT_PASSWORD=${PG_ADMIN_PASSWORD}
-        restart: on-failure
-
     pg11:
         image: postgres:11-alpine
         container_name: pg11
@@ -58,10 +46,6 @@ volumes:
     pg10-database:
         driver: local
         name: pg10-database
-
-    pgadmin-data:
-        driver: local
-        name: pgadmin-data
 
     mssql2017-database:
         driver: local
