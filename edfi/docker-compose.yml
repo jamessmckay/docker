@@ -30,7 +30,7 @@ services:
         volumes:
             - mssql2017-database:/var/opt/mssql
         ports:
-            - 1433:1433
+            - 1432:1433
         environment:
             - ACCEPT_EULA=Y
             - SA_PASSWORD=${MSSQL_PASSWORD}
