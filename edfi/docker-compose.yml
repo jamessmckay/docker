@@ -23,17 +23,6 @@ services:
             - POSTGRES_PASSWORD=${PG_PASSWORD}
         restart: on-failure
 
-    pg10:
-        image: postgres:10-alpine
-        container_name: pg10
-        volumes:
-            - pg10-database:/var/lib/postgresql/data
-        ports:
-            - 5430:5432
-        environment:
-            - POSTGRES_PASSWORD=${PG_PASSWORD}
-        restart: on-failure
-
     mssql2017:
         image: mcr.microsoft.com/mssql/server:latest
         container_name: mssql2017
@@ -55,10 +44,6 @@ volumes:
     pg11-database:
         driver: local
         name: pg11-database
-
-    pg10-database:
-        driver: local
-        name: pg10-database
 
     mssql2017-database:
         driver: local
