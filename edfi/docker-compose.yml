@@ -18,7 +18,7 @@ services:
         volumes:
             - pg11-database:/var/lib/postgresql/data
         ports:
-            - 5431:5432
+            - 5432:5432
         environment:
             - POSTGRES_PASSWORD=${PG_PASSWORD}
         restart: on-failure
